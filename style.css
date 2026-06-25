@@ -316,7 +316,8 @@ button:hover {
 }
 /* 🖨️ 印刷・PDF出力の時だけの特別ルール */
 @media print {
-  body {
-    min-width: 1000px !important; /* 印刷時の横幅をPCサイズに固定します */
+  html, body, #app, .container, main, div { 
+    min-width: 1100px !important; /* 全体の箱を強制的にPCサイズに固定します */
+    width: 1100px !important;
   }
 }
