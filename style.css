@@ -314,3 +314,9 @@ button:hover {
         display: none !important; 
     }
 }
+/* 🖨️ 印刷・PDF出力の時だけの特別ルール */
+@media print {
+  body {
+    min-width: 1000px !important; /* 印刷時の横幅をPCサイズに固定します */
+  }
+}
