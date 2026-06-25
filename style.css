@@ -1,0 +1,316 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    /* ★ 諸悪の根源だった display: flex と align-items: center を完全に排除しました */
+    margin: 0;
+    padding: 30px 15px; /* 通常画面の時、上下に程よい余白を作ります */
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #111111;
+    padding: 18px; 
+    border-radius: 8px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 4px 25px rgba(212, 175, 55, 0.25);
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+    margin: 0 auto; /* ★ 画面の横中央にピタッと配置します */
+}
+
+h1 {
+    font-size: 24px; 
+    margin-top: 0;
+    margin-bottom: 15px; 
+    text-align: center;
+    color: #d4af37;
+    letter-spacing: 2px;
+}
+
+.grid-3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 15px; 
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px; 
+}
+
+.market-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.column {
+    flex: 1;
+    min-width: 0;
+    background-color: #1a1a1a;
+    padding: 12px; 
+    border-radius: 6px;
+    border: 1px solid #d4af37;
+    box-sizing: border-box;
+}
+
+.gold-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 12px 0; 
+}
+
+.input-group {
+    margin-bottom: 6px; 
+}
+label {
+    display: block;
+    margin-bottom: 3px; 
+    font-weight: bold;
+    font-size: 11px; 
+    color: #d4af37;
+}
+.customer-label {
+    color: #aa7c11;
+}
+.metal-label, .purity-label {
+    color: #ffffff;
+}
+
+input[type="number"], input[type="text"], select {
+    width: 100%;
+    padding: 6px 8px; 
+    background-color: #222222;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-size: 14px; 
+    text-align: center;       
+    text-align-last: center;  
+}
+input[type="number"]:focus, input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #ffffff;
+}
+
+.price-display {
+    background-color: #221a08;
+    border: 1px dashed #d4af37;
+    padding: 5px; 
+    border-radius: 4px;
+    text-align: center;
+    font-size: 11px;
+    color: #cccccc;
+    margin: 6px 0; 
+    font-weight: bold;
+}
+.price-display span {
+    color: #d4af37;
+    font-size: 15px;
+}
+
+.customer-area {
+    margin-bottom: 12px; 
+    display: flex;
+    gap: 15px;
+}
+.customer-name { flex: 2; }
+.customer-date { flex: 1; }
+
+.sub-result {
+    margin-top: 5px; 
+    padding: 5px;
+    background-color: #222222;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 10px;
+    color: #aaaaaa;
+    border: 1px solid #333333;
+}
+.sub-result span {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 1px;
+}
+.sub-result.purchase {
+    background-color: #2a200a;
+    border: 1px solid #d4af37;
+}
+.sub-result.purchase span {
+    color: #d4af37;
+}
+
+.total-board {
+    margin-top: 12px; 
+    display: flex;
+    gap: 15px;
+}
+.total-box {
+    flex: 1;
+    padding: 10px; 
+    background-color: #1a1a1a;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    text-align: center;
+}
+.total-box.final {
+    background-color: #221a08;
+    border: 2px solid #d4af37;
+}
+.total-title {
+    font-size: 11px;
+    color: #aaaaaa;
+    margin-bottom: 2px;
+}
+.total-box.final .total-title {
+    color: #d4af37;
+    font-weight: bold;
+}
+.total-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.total-box.final .total-price {
+    font-size: 22px;
+    color: #d4af37;
+}
+
+.action-area {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px; 
+}
+button {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+}
+button:hover {
+    opacity: 0.9;
+}
+.btn-pdf {
+    background: linear-gradient(135deg, #d4af37, #aa7c11);
+    color: #000000;
+}
+.btn-print {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+/* ===================================================
+   スマートフォン・タブレット表示用スタイル（画面幅768px以下）
+   =================================================== */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px 10px; 
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 20px; 
+    }
+    .grid-3 {
+        flex-direction: column; 
+        gap: 12px;
+    }
+    .customer-area {
+        flex-direction: column; 
+        gap: 8px;
+    }
+    .total-board {
+        flex-direction: column; 
+        gap: 8px;
+    }
+    .action-area {
+        flex-direction: column; 
+        gap: 10px;
+    }
+}
+
+/* ===================================================
+   PDF保存ボタン用スタイル
+   =================================================== */
+.container.pdf-mode {
+    background-color: #ffffff !important;
+    border: none !important; 
+    box-shadow: none !important;
+    margin: 0 auto !important;   /* PDF化のときも確実に横中央 */
+    padding: 10px !important;    /* PDF内の余白を安定化 */
+}
+.container.pdf-mode * {
+    color: #000000 !important;
+}
+.container.pdf-mode .column, 
+.container.pdf-mode .total-box, 
+.container.pdf-mode .sub-result, 
+.container.pdf-mode .price-display {
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+}
+.container.pdf-mode input[type="number"], 
+.container.pdf-mode input[type="text"], 
+.container.pdf-mode select {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-bottom: 1px solid #000000 !important;
+    border-radius: 0 !important;
+    padding: 4px 0 !important; 
+}
+.container.pdf-mode .gold-divider {
+    display: none !important;
+}
+
+/* ===================================================
+   通常の印刷用（ブラウザの印刷機能用）スタイル
+   =================================================== */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 12mm 10mm;
+    }
+    html, body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .container { 
+        background-color: #ffffff !important; 
+        border: none !important; 
+        box-shadow: none !important; 
+        max-width: 100% !important; 
+        padding: 0 !important; 
+        margin: 0 auto !important; 
+    }
+    .container * {
+        color: #000000 !important;
+    }
+    .column, .total-box, .sub-result, .price-display { 
+        background-color: #ffffff !important; 
+        border: 1px solid #000000 !important; 
+    }
+    input[type="number"], input[type="text"], select { 
+        background-color: #ffffff !important; 
+        border: none !important; 
+        border-bottom: 1px solid #000000 !important; 
+        border-radius: 0 !important; 
+        padding: 4px 0 !important; 
+        -webkit-appearance: none; 
+        appearance: none; 
+    }
+    button, .gold-divider { 
+        display: none !important; 
+    }
+}

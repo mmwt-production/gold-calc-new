@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Metal Calculator Ultra</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Precious Metal Calculator Pro</h1>
+        
+        <div class="customer-area">
+            <div class="input-group customer-name">
+                <label class="customer-label">お客様名</label>
+                <input type="text" id="customer-name" placeholder="例：山田 太郎 様">
+            </div>
+            <div class="input-group customer-date">
+                <label class="customer-label">作成日時</label>
+                <input type="text" id="create-datetime">
+            </div>
+        </div>
+        
+        <div class="grid-3">
+            <div class="market-col">
+                <label>ゴールド相場 (円)</label>
+                <input type="number" id="market-gold" class="market-input" value="20000" min="0" oninput="calculateAll()">
+            </div>
+            <div class="market-col">
+                <label>プラチナ相場 (円)</label>
+                <input type="number" id="market-platinum" class="market-input" value="7000" min="0" oninput="calculateAll()">
+            </div>
+            <div class="market-col">
+                <label>シルバー相場 (円)</label>
+                <input type="number" id="market-silver" class="market-input" value="250" min="0" oninput="calculateAll()">
+            </div>
+        </div>
+        
+        <div class="gold-divider"></div>
+        
+        <div class="grid-3">
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-1" onchange="onMetalChange(1)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-1" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-1">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-1" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-1" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-1">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-1">¥0</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-2" onchange="onMetalChange(2)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-2" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-2">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-2" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-2" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-2">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-2">¥0</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-3" onchange="onMetalChange(3)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-3" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-3">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-3" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-3" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-3">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-3">¥0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3">
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-4" onchange="onMetalChange(4)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-4" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-4">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-4" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-4" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-4">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-4">¥0</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-5" onchange="onMetalChange(5)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-5" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-5">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-5" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-5" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-5">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-5">¥0</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="input-group">
+                    <label class="metal-label">貴金属の種類</label>
+                    <select id="metal-6" onchange="onMetalChange(6)">
+                        <option value="gold" selected>ゴールド</option>
+                        <option value="platinum">プラチナ</option>
+                        <option value="silver">シルバー</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="purity-label">品位</label>
+                    <select id="purity-6" onchange="calculateAll()">
+                    </select>
+                </div>
+                <div class="price-display">
+                    品位単価: <span id="unit-price-6">¥0</span> / g
+                </div>
+                <div class="input-group">
+                    <label>重量 (g)</label>
+                    <input type="number" id="weight-6" placeholder="0" step="0.01" min="0" oninput="calculateAll()">
+                </div>
+                <div class="input-group">
+                    <label>掛け率 (%)</label>
+                    <input type="number" id="rate-6" value="50" min="0" max="100" step="0.1" oninput="calculateAll()">
+                </div>
+                <div class="sub-result">
+                    概算合計 (税込)
+                    <span id="sub-total-6">¥0</span>
+                </div>
+                <div class="sub-result purchase">
+                    買取価格
+                    <span id="sub-pur-6">¥0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="total-board">
+            <div class="total-box">
+                <div class="total-title">総合計 概算金額 (税込)</div>
+                <div class="total-price" id="grand-total">¥0</div>
+            </div>
+            <div class="total-box final">
+                <div class="total-title">総合計 買取価格金額</div>
+                <div class="total-price" id="grand-purchase">¥0</div>
+            </div>
+        </div>
+
+        <div class="action-area">
+            <button class="btn-pdf" onclick="saveAsPDF()">PDFで保存</button>
+            <button class="btn-print" onclick="window.print()">印刷する</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
