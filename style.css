@@ -314,11 +314,3 @@ button:hover {
         display: none !important; 
     }
 }
-/* 🖨️ 印刷・PDF出力の時だけの特別ルール
-@media print {
-    html, body, #app, .container, main, div { 
-        min-width: 1100px !important;
-        width: 1100px !important;
-    }
-}
-*/
