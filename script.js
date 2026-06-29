@@ -9,15 +9,25 @@ const purityData = {
         { name: 'K9 (37.5%)', ratio: 0.375 }
     ],
     platinum: [
-        { name: 'Pt1000 (100%)', ratio: 1.000 },
-        { name: 'Pt950 (95.0%)', ratio: 0.950 },
-        { name: 'Pt900 (90.0%)', ratio: 0.900 },
-        { name: 'Pt850 (85.0%)', ratio: 0.850 }
+    { name: 'Pt1000 (100%)', ratio: 1.000 },
+    { name: 'Pt950 (95.0%)', ratio: 0.950 },
+    { name: 'Pt900 (90.0%)', ratio: 0.900 },
+    { name: 'Pt850 (85.0%)', ratio: 0.850 },
+    { name: 'Pt600 (60.0%)', ratio: 0.600 },
+    { name: 'Pt585 (58.5%)', ratio: 0.585 },
+    { name: 'Pt505 (50.5%)', ratio: 0.505 }
     ],
+
     silver: [
-        { name: 'Sv1000 (100%)', ratio: 1.000 },
-        { name: 'Sv925 (92.5%)', ratio: 0.925 }
-    ]
+    { name: 'Sv1000 (100%)', ratio: 1.000 },
+    { name: 'Sv925 (92.5%)', ratio: 0.925 },
+    { name: 'Sv900 (90.0%)', ratio: 0.900 },
+    { name: 'Sv850 (85.0%)', ratio: 0.850 },
+    { name: 'Sv800 (80.0%)', ratio: 0.800 }, // 👈 欧州アンティークの定番
+    { name: 'Sv750 (75.0%)', ratio: 0.750 },
+    { name: 'Sv600 (60.0%)', ratio: 0.600 }, // 👈 昭和の100円銀貨
+    { name: 'Sv500 (50.0%)', ratio: 0.500 }  // 👈 昔の50銭銀貨など
+  ]
 };
 
 function onMetalChange(colNum) {
